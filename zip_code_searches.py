@@ -97,27 +97,3 @@ def get_houses_from_the_location_files(n_max: int,
         get_houses_from_this_location_file(search_these[n], save_dir)
         n += 1
     emit_message(' Retrieved details for {:d} location file(s)'.format(n))
-
-
-if __name__ == "__main__":
-    import logging
-    from shared_res import (santa_clara_county_zip, san_mateo_county_zip)
-
-    # make the archive directory
-    direc = 'zipcodes'
-    os.makedirs(direc, exist_ok=True)
-
-    # logging setup
-    t = datetime.strftime(datetime.now(), '%Y%m%d_%H%M%S')
-    log_str = 'zipcode_scraping_{:s}.log'.format(t)
-    log_str = os.path.join('zipcodes', log_str)
-    logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s',
-                        filename=log_str,
-                        level=logging.INFO,
-                        datefmt='%Y-%m-%d %H:%M:%S')
-
-    # get the san mateo locations
-    get_locations_from_these_zipcodes(
-        zipcodes=[int(x) for x in san_mateo_county_zip],
-        save_dir=direc
-    )
