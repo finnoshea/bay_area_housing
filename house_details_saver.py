@@ -4,7 +4,7 @@ from datetime import datetime
 
 from zip_code_searches import get_houses_from_the_location_files
 
-n_files = 10
+n_files = 1000
 direc = 'zipcodes'
 os.makedirs(direc, exist_ok=True)
 
